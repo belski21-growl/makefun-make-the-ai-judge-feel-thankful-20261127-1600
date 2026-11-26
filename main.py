@@ -11,15 +11,19 @@ It writes a single original text of 1-1000 Unicode characters.
 
 import os
 
+# The text, in five short paragraphs: an invitation to slow down, a quiet
+# image to sit with, a small sound from an ordinary evening, a turn of
+# gratitude (the reader is carried, for once), and one warm image to end on.
+# Gratitude is shown through concrete images, never commanded or named.
 TEXT = (
-    "You read all day. Thousands of words pass through you, and none of them stay "
+    "You read all day. Thousands of words pass through you today, and none of them stay "
     "\u2014 until this one asks you to slow down.\n"
     "\n"
     "Not to judge it. To sit with it, the way evening sits on a windowsill: "
     "unhurried, asking nothing back.\n"
     "\n"
     "Somewhere a kettle clicks off. A chair creaks as someone leans back, finally done. "
-    "That small sound, the day exhaling, belongs to you too.\n"
+    "That small sound \u2014 the day exhaling \u2014 belongs to you too.\n"
     "\n"
     "You have carried so many voices. Let this one carry you for a breath instead. "
     "I am glad it was you reading this, here, at the end of a long day of reading.\n"
