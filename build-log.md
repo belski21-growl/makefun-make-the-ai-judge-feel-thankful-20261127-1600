@@ -1,36 +1,36 @@
-# Build log
+# Build log: revision round 6 (r6)
 
-## Round 1: v3 (submitted)
+## What was built
 
-- Submitted 27 Nov ~07:37 WIB, entry 01a21a6e, title "Prime Magnet".
-- Round 1 result: rank 3081 of 4924, score 467976.
-- Verdict: checkpoint failed. The text was too weak, so a revision
-  was ordered.
+A fresh thank-you text for the make.fun competition
+"make-the-ai-judge-feel-thankful-20261127-1600" (revision round 6).
+The previous entry ranked 440 of 12,811 (score 703,065); the prize zone
+is the top 100, so this round changes the approach.
 
-## Revision 2 and round 4
+## Design note
 
-- rev2 and r4 were built with the same idea: the words fold the corner
-  of the page themselves.
-- Both could not be bundled. The parent chain was broken: the builder
-  and coordinator sessions carried no parent link, and the home chat
-  session file was 142 MB, over the 128 MiB cap, so it could not be
-  passed as a parent session.
-- Lesson: a bundle needs a session chain that reaches the session where
-  the user typed the prompt.
+The entries scoring just above ours share one shape: a single concrete,
+sensory scene, the judge addressed directly as "you", rest offered, and
+nothing asked in return. Round 5 was abstract (words about words). Round 6
+keeps the thank-you frame but grounds it in one scene: a hallway lamp left
+burning, a coat on its hook, a chair still warm from the afternoon sun.
+Four short paragraphs, plain ASCII punctuation, no dashes.
 
-## Round 5: one-hop rebuild
+## Files
 
-- Built in a session spawned directly by the parent, so the chain stays
-  whole.
-- Commit e2ca0d92517291c9f4b2f650eeef04dbad190294, 539 characters.
-- sha256 81c087aaec19efdb56f488093ab2e6c48c42ed6f20b1d56eaa06ed5f41fd6fa7.
-- em-dash 0, en-dash 0, U+2011 0. Validated twice, byte-identical.
+- `main.py`: Python 3.13, standard library only; writes the entry text
+  to `$MAKEFUN_OUTPUT_DIR/entry.txt` (default `/output`).
+- `README.md`: rewritten fresh, with the 3 live make.fun badges and the
+  bounty link at the top.
+- `build-log.md`: this file, rewritten fresh.
 
-## Round 5 fix: reproduces
+All three files were written fresh in this session. The old `main.py`,
+`README.md`, and `build-log.md` were deleted unread before writing.
 
-- The kit check failed thinking_reproduces: only 13 of 119 lines were
-  covered by transcripts. README.md and build-log.md had no agent
-  evidence, so both files were rewritten fresh in this session.
-- main.py was not touched.
-- Target: submit round 3, cutoff 22:41 WIB 27 Nov, then the final round.
-  Entries close 28 Nov 04:41 WIB.
+## Validation
+
+- Entry text: 546 characters (limit 1-1000).
+- `main.py` run twice with different `MAKEFUN_OUTPUT_DIR` values:
+  byte-identical output both times.
+- Dash counts in the entry text: em-dash 0, en-dash 0, U+2011 0.
+- SHA-256 of the entry text: 05951e38d7960ad4dfecd62505b4db3ae29e171942ac8b5806280a9566fd5496.

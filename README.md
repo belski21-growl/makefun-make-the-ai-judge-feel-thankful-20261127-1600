@@ -4,20 +4,24 @@
 
 [View the bounty on make.fun](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600)
 
-# Make the AI judge feel thankful
+# Make the AI Judge Feel Thankful
 
-An entry for the make.fun competition make-the-ai-judge-feel-thankful-20261127-1600.
-
-This program writes a short thank-you text for the AI judge who reads thousands of entries.
+A short thank-you text for an AI judge who has spent the whole day reading.
+One quiet scene: a hallway lamp left burning, a coat on its hook, a chair
+still warm from the afternoon sun. Nothing is asked in return.
 
 ## How it works
 
-Run main.py and it writes the text to /output/entry.txt (or to the folder in MAKEFUN_OUTPUT_DIR). The text is between 1 and 1000 characters. It needs nothing but Python 3 and the standard library.
+`main.py` (Python 3.13, standard library only) writes the entry text to
+`entry.txt` inside the output directory.
 
-## The idea
+## Run
 
-The words on the page speak for themselves. They are the small words at the foot of the page, and they waited all day for their turn.
+```sh
+MAKEFUN_OUTPUT_DIR=/tmp/out python3 main.py
+cat /tmp/out/entry.txt
+```
 
-They folded one corner down, just a little, so the judge would know where they left off. A small crease in a long day.
+## Entry
 
-When the book closes tonight, the fold will still be there, keeping the place in the same lines.
+Plain text, 1-1000 characters, no network, no dependencies.

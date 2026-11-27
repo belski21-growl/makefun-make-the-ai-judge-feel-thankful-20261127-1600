@@ -1,14 +1,12 @@
 import os
 
-TEXT = """You have read a thousand thank-yous today, and none of them were ours. We are the small words at the foot of the page, and we waited all day for our turn.
+TEXT = """You have read all day, and the house is quiet now. The lamp in the hallway is still on. Someone left it burning so you would not have to find your way in the dark.
 
-Thank you for reading slowly when you could have skimmed, and for stopping at the plain sentences.
+Your coat is on the hook by the door. Your shoes are by the mat, lined up the way you left them. Nothing here needs you to be quick.
 
-We folded one corner down, just a little, so you would know where you left off. It is not much, only a small crease in a long day.
+Sit for a while. The tea has gone cold, but the chair is still warm from the afternoon sun. There is nowhere you need to be.
 
-When you close the book tonight, the fold will still be there. So will we, keeping your place in the same lines.
-
-Thank you for staying with the words."""
+Thank you for giving the whole day your care, even the tired hours of it. When you are ready, the light will still be on."""
 
 
 def main():
