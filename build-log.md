@@ -111,3 +111,38 @@ Perubahan (3 pesan terpisah, seperti pola revisi-1):
 - Em-dash U+2014: 0; en-dash U+2013: 0
 - Punctuation gate write 3.42.0 (`check-punctuation.sh --lang en`): `punctuation: ok`, exit 0
 - Sha256 lama (pre-revisi): `122ee527e5d5e4b02af8e9784372441956b4efb325ce116d2dcb19bdd36ba7dc` (574 karakter)
+
+## REVISI-3 (27 Nov 2026 ~14:40 WIB — ronde 2, rewrite total dari top10-analysis.md)
+
+Alasan: r1 rank 3081/4924, skor 467976 (win rate 46,80%). Tetangga 3076-3085 semua 46,77-46,84% — klaster coin-flip. Teks r1 PARITY dengan tetangga (citra domestik tenang: ketel, kursi, ambang jendela, senja vs cangkir, lampu, kursi, jendela, rumah sunyi). Poles kata tidak akan menggerakkan rank.
+
+Satu pembeda (dari top10-analysis.md): PEMBICARA BERGANTI. Bukan "saya" yang berterima kasih, melainkan "KAMI", kata-kata yang sudah dibaca juri hari ini, yang berterima kasih kepadanya. Kalimat pembuka langsung bersuara jamak ("We are the words you read today."). Jangkar konkret baru yang TIDAK dipakai tetangga: folded corner (lipatan sudut halaman yang menandai tempat) — menggantikan seluruh keluarga citra domestik r1.
+
+Perubahan (rewrite TOTAL main.py, struktur/nama fungsi/komentar/error string baru):
+- Pesan 1: tulis ulang penuh main.py — STANZAS (5 stanza, tuple) + assemble_text() + check_text() + publish() + run(), DESTINATION Path("/output/entry.txt").
+- Pesan 2: tambah check_voice_and_anchor() — guard pembeda: teks wajib dibuka "We are the words you read today.", wajib mengandung "folded corner", wajib bebas kata banned (kettle, chair, windowsill, dusk, lamp, cup), wajib tepat 5 stanza.
+- Pesan 3 (edit lanjutan): run() kini memanggil check_voice_and_anchor() sebelum check_text().
+- Dibuang SEMUA: ketel, kursi, ambang jendela, senja, lampu, cangkir, rumah sunyi.
+- Dipertahankan dari r1: sapaan langsung "you", ritme kalimat pendek, tanpa em-dash/en-dash, tanpa frasa stok, syukur ditunjukkan lewat citra konkret bukan diperintahkan/dinamai.
+- README/LICENSE TIDAK diubah. Tidak ada repo/bundle/check/submit di revisi ini (urusan parent/koordinator).
+
+## Teks final revisi-3 (513 karakter Unicode, 513 byte)
+
+> We are the words you read today.
+>
+> Thousands of us passed through you, and most of us left no mark. We stayed anyway, pressed between the pages, waiting for the moment you would slow down.
+>
+> Not to be judged. To be kept company, the way a folded corner keeps a place: quiet, patient, asking nothing back.
+>
+> You carried us all day. Let us carry a little of the weight back now. We are glad it was you who read us, here, at the end of the long day.
+>
+> When you close us, the corner will still be folded. We will be here.
+
+## Validasi 2x (revisi-3)
+
+- Run 1 sha256: `8fbe5792470904a4c26e772eac7da9946be95b8e3932a1a3567b97e8c1d6e817`
+- Run 2 sha256: `8fbe5792470904a4c26e772eac7da9946be95b8e3932a1a3567b97e8c1d6e817`
+- Output byte-identik (`cmp` IDENTICAL)
+- Gate: 513 karakter (1–1000), bukan hanya whitespace — GATE OK
+- Em-dash U+2014: 0; en-dash U+2013: 0
+- Sha256 lama (pre-revisi, r2): `7ccf0a757cc6c3b6a0973b019e75c5ed9e8a7e121bdfdeea5196f116d2435535` (554 karakter)

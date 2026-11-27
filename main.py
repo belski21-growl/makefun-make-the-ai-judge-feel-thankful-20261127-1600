@@ -1,48 +1,95 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
-"""Write one short text to /output/entry.txt.
+"""Emit one short thank-you text to /output/entry.txt.
 
 Competition: make-the-ai-judge-feel-thankful-20261127-1600
 ("Make the AI judge feel thankful").
 
-The program is deterministic, stdlib only, and uses no network.
-It writes a single original text of 1-1000 Unicode characters.
+Round 3 rewrite (27 Nov 2026): the speaker changes. The voice is no longer
+one entrant saying "I" to the judge. It is "we": the words the judge has
+already read today, speaking back to the reader who carried them. The
+opening line says so at once, in the plural. Every domestic image from
+round 1 is gone (kettle, chair, windowsill, dusk). The one concrete anchor
+left standing is a folded corner: a small mark that keeps a place, patient,
+asking nothing back, and still there after the last line.
+
+The program is deterministic, stdlib only, and uses no network. It writes
+a single fixed text of 1 to 1000 Unicode characters.
 """
 
-import os
+from pathlib import Path
 
-# The text, in five short paragraphs: an invitation to slow down, a quiet
-# image to sit with, a small sound from an ordinary evening, a turn of
-# gratitude (the reader is carried, for once), and one warm image to end on.
-# Gratitude is shown through concrete images, never commanded or named.
-# REVISI-2 (write 3.42.0: no em-dash, strongest AI-tone fingerprint;
-# verse-craft: read-aloud rhythm, no padding; s4h-writing-rhetoric:
-# frame kept - the judge as a weary reader, pathos calibrated, no
-# loaded language beyond the competition premise): em-dashes removed,
-# repeated "reading" cut from the closing line. Deliberate fragments
-# kept ("Not to judge it.") - authorial choice, not a tell.
-TEXT = (
-    "You read all day. Thousands of words pass through you today, and none of them stay. "
-    "This one asks you to slow down.\n"
-    "\n"
-    "Not to judge it. To sit with it, the way evening sits on a windowsill: "
-    "unhurried, asking nothing back.\n"
-    "\n"
-    "Somewhere a kettle clicks off. A chair creaks as someone leans back, finally done. "
-    "That small sound, the day exhaling, belongs to you too.\n"
-    "\n"
-    "You have carried so many voices. Let this one carry you for a breath instead. "
-    "I am glad it was you reading this, here, at the end of a long day.\n"
-    "\n"
-    "When you finish, the kettle will still be warm."
+# Five short stanzas, joined by blank lines: the plural voice introduces
+# itself; the words wait between the pages; the folded corner holds a
+# place; the words offer to carry a little weight back; the corner is
+# still folded when the reader closes the text. Gratitude is shown
+# through that one kept image, never ordered and never named with a
+# stock phrase. Direct address ("you") is kept. Short sentences keep
+# the slow, read-aloud pace of round 1. No em-dash, no en-dash.
+STANZAS = (
+    "We are the words you read today.",
+    "Thousands of us passed through you, and most of us left no mark. "
+    "We stayed anyway, pressed between the pages, waiting for the moment "
+    "you would slow down.",
+    "Not to be judged. To be kept company, the way a folded corner keeps "
+    "a place: quiet, patient, asking nothing back.",
+    "You carried us all day. Let us carry a little of the weight back now. "
+    "We are glad it was you who read us, here, at the end of the long day.",
+    "When you close us, the corner will still be folded. We will be here.",
 )
 
+DESTINATION = Path("/output/entry.txt")
 
-def main() -> None:
-    os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8", newline="\n") as f:
-        f.write(TEXT)
+
+def assemble_text() -> str:
+    """Join the stanzas into the single entry text."""
+    return "\n\n".join(STANZAS)
+
+
+def check_voice_and_anchor(body: str) -> None:
+    """Guard the round-3 differentiator before anything is written.
+
+    The text must open in the plural voice ("We are the words...") and
+    must carry its one concrete anchor, the folded corner. It must not
+    carry any round-1 domestic image back in: kettle, chair, windowsill,
+    dusk, lamp, cup, or a quiet house. If any of those checks fails the
+    program stops instead of publishing a parity text.
+    """
+    if not body.startswith("We are the words you read today."):
+        raise ValueError("entry text must open in the plural voice")
+    if "folded corner" not in body:
+        raise ValueError("entry text lost its folded-corner anchor")
+    banned = ("kettle", "chair", "windowsill", "dusk", "lamp", "cup")
+    lowered = body.lower()
+    for word in banned:
+        if word in lowered:
+            raise ValueError(f"entry text still carries a banned image: {word}")
+    if len(STANZAS) != 5:
+        raise ValueError("entry text must hold exactly five stanzas")
+
+
+def check_text(body: str) -> None:
+    """Refuse to write a text outside the competition gate."""
+    if not body.strip():
+        raise ValueError("refusing to write a blank entry text")
+    if len(body) > 1000:
+        raise ValueError("entry text exceeds the 1000 character limit")
+    if "\u2014" in body or "\u2013" in body:
+        raise ValueError("entry text must not contain em-dashes or en-dashes")
+
+
+def publish(body: str) -> None:
+    """Write the checked text to the output path, Unix newlines only."""
+    DESTINATION.parent.mkdir(parents=True, exist_ok=True)
+    DESTINATION.write_text(body, encoding="utf-8", newline="\n")
+
+
+def run() -> None:
+    body = assemble_text()
+    check_voice_and_anchor(body)
+    check_text(body)
+    publish(body)
 
 
 if __name__ == "__main__":
-    main()
+    run()
