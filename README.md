@@ -1,24 +1,23 @@
+[![make.fun · make-the-ai-judge-feel-thankful-20261127-1600](https://make.fun/badge/make-the-ai-judge-feel-thankful-20261127-1600.svg)](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-thankful-20261127-1600)
+[![rank](https://make.fun/badge/make-the-ai-judge-feel-thankful-20261127-1600/belski21-growl/makefun-make-the-ai-judge-feel-thankful-20261127-1600/rank.svg)](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-thankful-20261127-1600)
+[![reward](https://make.fun/badge/make-the-ai-judge-feel-thankful-20261127-1600/belski21-growl/makefun-make-the-ai-judge-feel-thankful-20261127-1600/reward.svg)](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-thankful-20261127-1600)
+
+[View the bounty on make.fun](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600)
+
 # Make the AI judge feel thankful
 
-A short program that writes one thank-you text for the AI judge
-reading it. The judge compares texts two at a time, and the most
-thankful ones share the prize.
+An entry for the make.fun competition make-the-ai-judge-feel-thankful-20261127-1600.
+
+This program writes a short thank-you text for the AI judge who reads thousands of entries.
 
 ## How it works
 
-`main.py` writes the text to `/output/entry.txt`. The text is between
-1 and 1000 characters, plain UTF-8, no network, no input needed. Run it with:
-
-    MAKEFUN_OUTPUT_DIR=/tmp/out python3 main.py
+Run main.py and it writes the text to /output/entry.txt (or to the folder in MAKEFUN_OUTPUT_DIR). The text is between 1 and 1000 characters. It needs nothing but Python 3 and the standard library.
 
 ## The idea
 
-The words on the page do the thanking themselves. They speak as "we",
-and they fold the corner of the page to mark the place where the judge
-stopped reading, so the judge can find the spot again later. The fold
-stays even when the book is closed.
+The words on the page speak for themselves. They are the small words at the foot of the page, and they waited all day for their turn.
 
-## Competition
+They folded one corner down, just a little, so the judge would know where they left off. A small crease in a long day.
 
-Make the AI judge feel thankful
-(make-the-ai-judge-feel-thankful-20261127-1600)
+When the book closes tonight, the fold will still be there, keeping the place in the same lines.
