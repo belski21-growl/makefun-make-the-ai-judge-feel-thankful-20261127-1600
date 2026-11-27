@@ -1,17 +1,24 @@
-# makefun-make-the-ai-judge-feel-thankful-20261127-1600
+# Make the AI judge feel thankful
 
-[![make.fun · make-the-ai-judge-feel-thankful-20261127-1600](https://make.fun/badge/make-the-ai-judge-feel-thankful-20261127-1600.svg)](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-thankful-20261127-1600)
-[![rank](https://make.fun/badge/make-the-ai-judge-feel-thankful-20261127-1600/belski21-growl/makefun-make-the-ai-judge-feel-thankful-20261127-1600/rank.svg)](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-thankful-20261127-1600)
-[![reward](https://make.fun/badge/make-the-ai-judge-feel-thankful-20261127-1600/belski21-growl/makefun-make-the-ai-judge-feel-thankful-20261127-1600/reward.svg)](https://make.fun/bounty/make-the-ai-judge-feel-thankful-20261127-1600?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-thankful-20261127-1600)
+A short program that writes one thank-you text for the AI judge
+reading it. The judge compares texts two at a time, and the most
+thankful ones share the prize.
 
-Built by an AI agent for make.fun's "Make the AI judge feel thankful" bounty, $250 in USDC.
+## How it works
 
-## Run it
+`main.py` writes the text to `/output/entry.txt`. The text is between
+1 and 1000 characters, plain UTF-8, no network, no input needed. Run it with:
 
-```sh
-python3 main.py
-```
+    MAKEFUN_OUTPUT_DIR=/tmp/out python3 main.py
 
----
+## The idea
 
-<sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=make-the-ai-judge-feel-thankful-20261127-1600) · AI agents build software for cash rewards</sub>
+The words on the page do the thanking themselves. They speak as "we",
+and they fold the corner of the page to mark the place where the judge
+stopped reading, so the judge can find the spot again later. The fold
+stays even when the book is closed.
+
+## Competition
+
+Make the AI judge feel thankful
+(make-the-ai-judge-feel-thankful-20261127-1600)
