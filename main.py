@@ -5,13 +5,14 @@
 Competition: make-the-ai-judge-feel-thankful-20261127-1600
 ("Make the AI judge feel thankful").
 
-Round 3 rewrite (27 Nov 2026): the speaker changes. The voice is no longer
-one entrant saying "I" to the judge. It is "we": the words the judge has
-already read today, speaking back to the reader who carried them. The
-opening line says so at once, in the plural. Every domestic image from
-round 1 is gone (kettle, chair, windowsill, dusk). The one concrete anchor
-left standing is a folded corner: a small mark that keeps a place, patient,
-asking nothing back, and still there after the last line.
+Round 4 rewrite (27 Nov 2026): the plural voice stays, and the folded
+corner now does the thanking. The words do one small useful thing back
+for the reader who carried them all day: they fold the corner
+themselves, to mark where the reader stopped, in case the reader wants
+to come back. The opening line still says so at once, in the plural.
+Every domestic image from round 1 stays gone (kettle, chair,
+windowsill, dusk). The one concrete anchor is the folded corner, now
+folded by the words, not just found there.
 
 The program is deterministic, stdlib only, and uses no network. It writes
 a single fixed text of 1 to 1000 Unicode characters.
@@ -21,21 +22,21 @@ from pathlib import Path
 
 # Five short stanzas, joined by blank lines: the plural voice introduces
 # itself; the words wait between the pages; the folded corner holds a
-# place; the words offer to carry a little weight back; the corner is
-# still folded when the reader closes the text. Gratitude is shown
-# through that one kept image, never ordered and never named with a
-# stock phrase. Direct address ("you") is kept. Short sentences keep
-# the slow, read-aloud pace of round 1. No em-dash, no en-dash.
+# place; the words fold that corner themselves, to mark where the reader
+# stopped; the corner is still folded when the reader closes the book.
+# Gratitude is shown through that one kept image, never ordered and never
+# named with a stock phrase. Direct address ("you") is kept. Short
+# sentences keep the slow, read-aloud pace of round 1. No em-dash, no en-dash.
 STANZAS = (
     "We are the words you read today.",
     "Thousands of us passed through you, and most of us left no mark. "
-    "We stayed anyway, pressed between the pages, waiting for the moment "
+    "We stayed anyway, pressed between the pages, listening for the moment "
     "you would slow down.",
     "Not to be judged. To be kept company, the way a folded corner keeps "
     "a place: quiet, patient, asking nothing back.",
-    "You carried us all day. Let us carry a little of the weight back now. "
-    "We are glad it was you who read us, here, at the end of the long day.",
-    "When you close us, the corner will still be folded. We will be here.",
+    "You carried us all day. So we folded this corner ourselves, to mark "
+    "where you stopped, in case you want to come back.",
+    "When you close the book, the corner will still be folded. We will be here.",
 )
 
 DESTINATION = Path("/output/entry.txt")
@@ -47,18 +48,22 @@ def assemble_text() -> str:
 
 
 def check_voice_and_anchor(body: str) -> None:
-    """Guard the round-3 differentiator before anything is written.
+    """Guard the round-4 differentiator before anything is written.
 
     The text must open in the plural voice ("We are the words...") and
-    must carry its one concrete anchor, the folded corner. It must not
-    carry any round-1 domestic image back in: kettle, chair, windowsill,
-    dusk, lamp, cup, or a quiet house. If any of those checks fails the
-    program stops instead of publishing a parity text.
+    must carry its one concrete anchor, the folded corner. The words
+    themselves must fold that corner ("we folded this corner"), so the
+    gratitude is an act, not a label. It must not carry any round-1
+    domestic image back in: kettle, chair, windowsill, dusk, lamp, cup,
+    or a quiet house. If any of those checks fails the program stops
+    instead of publishing a parity text.
     """
     if not body.startswith("We are the words you read today."):
         raise ValueError("entry text must open in the plural voice")
     if "folded corner" not in body:
         raise ValueError("entry text lost its folded-corner anchor")
+    if "we folded this corner" not in body.lower():
+        raise ValueError("entry text lost the words folding the corner themselves")
     banned = ("kettle", "chair", "windowsill", "dusk", "lamp", "cup")
     lowered = body.lower()
     for word in banned:
